@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cydeo</title>
+</head>
+<body>
+<div align="center">
+    <form th:action="@{/car/confirm}" method="post" th:object="${car}">
+
+        <label>Car Make</label>
+        <input type="text" th:field="*{make}">
+        <br>
+        <label>Car Name:</label>
+        <input type="text" th:field="*{name}">
+        <br>
+        <label>Year of production</label>
+        <input type="text" th:field="*{year}">
+        <br>
+        <label>Color of the car</label>
+        <select th:field="*{color}">
+            <option value="" selected disabled hidden=""></option>
+            <option th:each="carcolor : ${color}" th:value="${carcolor}" th:text="${carcolor}"></option>
+        </select>
+        <br>
+        <label>Elctric</label>
+        <input type="checkbox" th:field="*{electric}">
+        <br>
+        <label>Company</label>
+        <textarea th:field="*{company}"></textarea>
+        <br>
+        <button type="submit">Register</button>
+
+
+
+
+    </form>
+</div>
+
+</body>
+</html>
