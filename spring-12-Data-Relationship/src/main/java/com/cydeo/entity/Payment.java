@@ -28,6 +28,8 @@ public class Payment {
     //@OneToOne(cascade = CascadeType.ALL)
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private PaymentDetail paymentDetail;
+    @ManyToOne
+    private Merchant merchant;
 
 
     public Payment(LocalDate createDate, BigDecimal amount, Status paymentStatus) {
