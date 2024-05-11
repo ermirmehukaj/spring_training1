@@ -2,6 +2,7 @@ package com.cydeo;
 
 
 import com.cydeo.repository.DepartmentRepository;
+import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,12 +12,12 @@ public class QueryDemo implements CommandLineRunner {
 
     private final RegionRepository regionRepository;
     private final DepartmentRepository departmentRepository;
+    private final EmployeeRepository employeeRepository;
 
-
-    public QueryDemo(RegionRepository regionRepository, DepartmentRepository departmentRepository) {
+    public QueryDemo(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.regionRepository = regionRepository;
-
         this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
@@ -37,6 +38,14 @@ public class QueryDemo implements CommandLineRunner {
         System.out.println("find by division" + departmentRepository.findByDivision("Health"));
         System.out.println("find by division ends with" + departmentRepository.findByDivisionEndingWith("ics"));
         System.out.println("find by division top 3 division contains" + departmentRepository.findDistinctTop3ByDivisionContains("Hea"));
+
+
+
+        System.out.println("-----------Employee-----------");
+
+
+        System.out.println(employeeRepository.retrieveEmployeeDetail());
+        System.out.println(employeeRepository.retrieveEmployeeSalary());
 
     }
 }
