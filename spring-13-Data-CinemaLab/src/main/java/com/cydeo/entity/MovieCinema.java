@@ -21,4 +21,11 @@ public class MovieCinema extends BaseEntity{
     private Movie movie;
     @ManyToOne(fetch = FetchType.LAZY)
     private Cinema cinema;
+
+    @Override
+    public String toString() {
+        return "MovieCinema{" +
+                "dateTime=" + dateTime +
+                '}';
+    }
 }
