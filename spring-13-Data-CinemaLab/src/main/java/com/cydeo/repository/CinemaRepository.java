@@ -37,14 +37,14 @@ public interface CinemaRepository extends JpaRepository<Cinema,Long> {
 
     //Write a JPQL query to read the cinema name with a specific id
     @Query("SELECT c.name from Cinema c where c.id = ?1")
-    List<Cinema> CinemaId(Integer id);
+    String CinemaId(Integer id);
 
 
 
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to read all cinemas by location country
-    @Query(value = "select * from Cinema where location.country = ?1" , nativeQuery = true)
+    @Query(value = "select * from Cinema c join location l" + "on c.location_id =l.id where l.country= ?1" , nativeQuery = true)
     List<Cinema> locationCinema(String location);
 
 
@@ -54,7 +54,11 @@ public interface CinemaRepository extends JpaRepository<Cinema,Long> {
 
 
     //Write a native query to sort all cinemas by name
+    @Query(value = "select * from cinema order by name",nativeQuery = true)
+    List<Cinema> sortByName();
 
 
     //Write a native query to distinct all cinemas by sponsored name
+    @Query(value = "select distinct sponsored_name from cinema",nativeQuery = true)
+    List<String> distinctBySponsoredName();
 }
