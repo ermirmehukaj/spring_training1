@@ -75,6 +75,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
 
     //Write a native query to read all accounts with an age higher than a specific value
-    @Query(value = "select * from account_details where age> :age", nativeQuery = true)
-    List<Account> higherAge(@Param("age") Integer age);
+    @Query(value = "SELECT * FROM account_details WHERE age > :age",nativeQuery = true)
+    List<Account> readAccountAllAgeHigher(@Param("age") Integer age);
 }
